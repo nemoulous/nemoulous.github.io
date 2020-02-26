@@ -1,12 +1,12 @@
 import './App.css';
-import { createMuiTheme, responsiveFontSizes, ThemeProvider, rgbToHex } from '@material-ui/core/styles';
+import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import React from 'react';
 
 import Routes from './routes';
 
 const theme = responsiveFontSizes(createMuiTheme({
   palette: {
-    secondary: { light: "rgba(20, 20, 20, 1)", main: "rgba(20, 20, 20, 1)", dark: "rgba(20, 20, 20, 1)"},
+    secondary: { light: "rgba(50, 50, 50, 1)", main: "rgba(25, 25, 25, 1)", dark: "rgba(0, 0, 0, 1)"},
     primary: { light: "rgba(200, 200, 200, 1)", main: "rgba(150, 150, 150, 1)", dark: "rgba(100, 100, 100, 1)" },
   },
   typography: {
@@ -17,11 +17,9 @@ const theme = responsiveFontSizes(createMuiTheme({
 
 
 const App = () => (
-  <div>
-    <ThemeProvider theme={theme}>
-      <Routes />
-    </ThemeProvider>
-  </div>
+  <ThemeProvider theme={theme}>
+    <Routes />
+  </ThemeProvider>
 );
 
 export default App;

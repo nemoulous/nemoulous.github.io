@@ -115,12 +115,12 @@ class AboutUs extends Component {
               <Grid container justify="center" direction="row" spacing={3}>
               {Team.map(value => (
               <Grid item xs={12} sm={6} md={4} key={value.name} >
-                <Paper className={classes.paper}>
+                <Paper className={classes.paper} >
                   <Avatar alt={value.name} src={value.image} className={classes.avatar} />
-                  <Typography variant="h6">
+                  <Typography variant="h6" color="primary">
                     {value.name}
                   </Typography>
-                  <Typography variant="subtitle1">
+                  <Typography variant="subtitle1" color="primary">
                     {value.title}
                   </Typography>
                 </Paper>

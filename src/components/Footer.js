@@ -49,7 +49,7 @@ const Footer = (props) => {
         <Typography variant="body1" color="inherit" noWrap>
           <Link to="/" className={classes.link}>
             <span>
-            Zodiac Labs
+            Nemoulous Capital
             </span>
           </Link>
         </Typography>
@@ -57,7 +57,7 @@ const Footer = (props) => {
           <span>© 2020</span>
         </Typography>
         <Typography variant="body1" color="inherit" noWrap>
-          <span>ZodiacLabs.io</span>
+          <span>NemoulousCapital.com</span>
         </Typography>
       </Grid>
     </div>

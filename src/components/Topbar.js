@@ -61,7 +61,7 @@ const styles = (theme) => ({
   },
   iconContainer: {
     display: 'none',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('xs')]: {
       display: 'block',
       marginLeft: 'auto',
     }
@@ -71,7 +71,12 @@ const styles = (theme) => ({
   },
   tabContainer: {
     marginLeft: 32,
-    [theme.breakpoints.down('sm')]: {display: 'none'}
+    [theme.breakpoints.down('xs')]: {display: 'none'}
+  },
+  drawerContents: {
+    backgroundColor: theme.palette.secondary.main ,
+    color: theme.palette.primary.light,
+    height: "100%"
   },
   tabItem: {
     paddingTop: 20,
@@ -154,14 +159,16 @@ class Topbar extends Component {
                   </div>
                   <div className={classes.tabContainer}>
                     <SwipeableDrawer anchor="right" open={menuDrawer} onClose={this.mobileMenuClose} onOpen={this.mobileMenuOpen}>
-                      <AppBar title="Menu" />
-                      <List>
-                        {Menu.map((item) => (
-                          <ListItem component={item.external ? MaterialLink : Link} href={item.external ? item.pathname : null} to={item.external ? null : { pathname: item.pathname, search: location.search }} button key={item.label}>
-                            <ListItemText primary={item.label} />
-                          </ListItem>
-                        ))}
-                      </List>
+                      <div className={classes.drawerContents}>
+                        <AppBar title="Menu"/>
+                        <List>
+                          {Menu.map((item) => ( 
+                        <ListItem component={item.external ? MaterialLink : Link} href={item.external ? item.pathname : null} to={item.external ? null : { pathname: item.pathname, search: location.search }} button key={item.label}>
+                              <ListItemText primary={item.label} />
+                            </ListItem>
+                          ))}
+                        </List>
+                      </div>
                     </SwipeableDrawer>
                     <Tabs
                       value={this.current() || value}
