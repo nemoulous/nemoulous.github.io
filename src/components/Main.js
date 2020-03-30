@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/styles/withStyles';
 import React, { Component } from 'react';
 import * as THREE from "three";
-import {MeshLine, MeshLineMaterial} from "three.meshline";
+// import {MeshLine, MeshLineMaterial} from "three.meshline";
 
 
 import './utils/MeshLine';
@@ -158,18 +158,24 @@ class Main extends Component {
       this.mount.appendChild( renderer.domElement );
       
       var camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 500 );
-      camera.position.set( 0, 0, 300 );
-      camera.lookAt( 70, -30, 0 );
+      camera.position.set( 0, 0, 250 );
+      camera.lookAt( window.innerWidth/20, -30, 0 );
       
       var scene = new THREE.Scene();
 
       //create a blue MeshLineMaterial
-      var material1 = new MeshLineMaterial( { color: 0xb0acb0 } );
-      var material2 = new MeshLineMaterial( { color: 0xe2dddf } );
-      var material3 = new MeshLineMaterial( { color: 0x85ebd9 } );
-      var material4 = new MeshLineMaterial( { color: 0x3d898d } );
-      var material5 = new MeshLineMaterial( { color: 0x2f404d } );
-      var material6 = new MeshLineMaterial( { color: 0x00ffff } );
+      // var material1 = new MeshLineMaterial( { color: 0xb0acb0 } );
+      // var material2 = new MeshLineMaterial( { color: 0xe2dddf } );
+      // var material3 = new MeshLineMaterial( { color: 0x85ebd9 } );
+      // var material4 = new MeshLineMaterial( { color: 0x3d898d } );
+      // var material5 = new MeshLineMaterial( { color: 0x2f404d } );
+      // var material6 = new MeshLineMaterial( { color: 0x00ffff } );
+      var material1 = new THREE.LineBasicMaterial( { color: 0xb0acb0 } );
+      var material2 = new THREE.LineBasicMaterial( { color: 0xe2dddf } );
+      var material3 = new THREE.LineBasicMaterial( { color: 0x85ebd9 } );
+      var material4 = new THREE.LineBasicMaterial( { color: 0x3d898d } );
+      var material5 = new THREE.LineBasicMaterial( { color: 0x2f404d } );
+      var material6 = new THREE.LineBasicMaterial( { color: 0x00ffff } );
 
       var points1 = [];
       var points2 = [];
@@ -187,36 +193,51 @@ class Main extends Component {
       ];
       var index = 0;
 
-      var geometry1 = new THREE.Geometry().setFromPoints( points1 );
-      var geometry2 = new THREE.Geometry().setFromPoints( points2 );
-      var geometry3 = new THREE.Geometry().setFromPoints( points3 );
-      var geometry4 = new THREE.Geometry().setFromPoints( points4 );
-      var geometry5 = new THREE.Geometry().setFromPoints( points5 );
-      var geometry6 = new THREE.Geometry().setFromPoints( points6 );
+      // var geometry1 = new THREE.Geometry().setFromPoints( points1 );
+      // var geometry2 = new THREE.Geometry().setFromPoints( points2 );
+      // var geometry3 = new THREE.Geometry().setFromPoints( points3 );
+      // var geometry4 = new THREE.Geometry().setFromPoints( points4 );
+      // var geometry5 = new THREE.Geometry().setFromPoints( points5 );
+      // var geometry6 = new THREE.Geometry().setFromPoints( points6 );
+      var geometry1 = new THREE.BufferGeometry().setFromPoints( points1 );
+      var geometry2 = new THREE.BufferGeometry().setFromPoints( points2 );
+      var geometry3 = new THREE.BufferGeometry().setFromPoints( points3 );
+      var geometry4 = new THREE.BufferGeometry().setFromPoints( points4 );
+      var geometry5 = new THREE.BufferGeometry().setFromPoints( points5 );
+      var geometry6 = new THREE.BufferGeometry().setFromPoints( points6 );
 
-      var _line1 = new MeshLine();
-      _line1.setGeometry(geometry1);
-      var line1 = new THREE.Mesh(_line1.geometry, material1);
 
-      var _line2 = new MeshLine();
-      _line2.setGeometry(geometry2);
-      var line2 = new THREE.Mesh(_line2.geometry, material2);
+      // var _line1 = new MeshLine();
+      // _line1.setGeometry(geometry1);
+      // var line1 = new THREE.Mesh(_line1.geometry, material1);
 
-      var _line3 = new MeshLine();
-      _line3.setGeometry(geometry1);
-      var line3 = new THREE.Mesh(_line3.geometry, material3);
+      // var _line2 = new MeshLine();
+      // _line2.setGeometry(geometry2);
+      // var line2 = new THREE.Mesh(_line2.geometry, material2);
 
-      var _line4 = new MeshLine();
-      _line4.setGeometry(geometry1);
-      var line4 = new THREE.Mesh(_line4.geometry, material4);
+      // var _line3 = new MeshLine();
+      // _line3.setGeometry(geometry1);
+      // var line3 = new THREE.Mesh(_line3.geometry, material3);
 
-      var _line5 = new MeshLine();
-      _line5.setGeometry(geometry1);
-      var line5 = new THREE.Mesh(_line5.geometry, material5);
+      // var _line4 = new MeshLine();
+      // _line4.setGeometry(geometry1);
+      // var line4 = new THREE.Mesh(_line4.geometry, material4);
 
-      var _line6 = new MeshLine();
-      _line6.setGeometry(geometry1);
-      var line6 = new THREE.Mesh(_line6.geometry, material6);
+      // var _line5 = new MeshLine();
+      // _line5.setGeometry(geometry1);
+      // var line5 = new THREE.Mesh(_line5.geometry, material5);
+
+      // var _line6 = new MeshLine();
+      // _line6.setGeometry(geometry1);
+      // var line6 = new THREE.Mesh(_line6.geometry, material6);
+
+      var line1 = new THREE.Line(geometry1, material1);
+      var line2 = new THREE.Line(geometry2, material2);
+      var line3 = new THREE.Line(geometry3, material3);
+      var line4 = new THREE.Line(geometry4, material4);
+      var line5 = new THREE.Line(geometry5, material5);
+      var line6 = new THREE.Line(geometry6, material6);
+
 
 
       scene.add( line1 );
@@ -277,17 +298,17 @@ class Main extends Component {
 
         if (index < 1000){
           geometry1.setFromPoints(points1);
-          _line1.setGeometry(geometry1);
+          // _line1.setGeometry(geometry1);
           geometry2.setFromPoints(points2);
-          _line2.setGeometry(geometry2);
+          // _line2.setGeometry(geometry2);
           geometry3.setFromPoints(points3);
-          _line3.setGeometry(geometry3);
+          // _line3.setGeometry(geometry3);
           geometry4.setFromPoints(points4);
-          _line4.setGeometry(geometry4);
+          // _line4.setGeometry(geometry4);
           geometry5.setFromPoints(points5);
-          _line5.setGeometry(geometry5);
+          // _line5.setGeometry(geometry5);
           geometry6.setFromPoints(points6);
-          _line6.setGeometry(geometry6);
+          // _line6.setGeometry(geometry6);
           renderer.render( scene, camera );
           index++;
         }
