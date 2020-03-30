@@ -76,6 +76,11 @@ const styles = (theme) => ({
 
 const Team = [
   {
+    name: "Jed Hsu",
+    title: "Title",
+    image: "test.png",
+  },
+  {
     name: "Jeffrey Luk",
     title: "Title",
     image: "test.png",

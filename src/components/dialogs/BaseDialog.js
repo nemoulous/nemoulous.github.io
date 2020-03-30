@@ -8,6 +8,9 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 const styles = (theme) => ({
+  dialog: {
+    backgroundColor: theme.palette.secondary.dark,
+  },
   container: {
     maxWidth: 600,
     flexGrow: 1,
@@ -36,9 +39,16 @@ class BaseDialog extends Component {
         aria-describedby="alert-dialog-description"
         scroll="body"
       >
-        <DialogTitle id="alert-dialog-title" />
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+        <DialogTitle
+          id="alert-dialog-title" 
+          className={classes.dialog}
+        />
+        <DialogContent
+          className={classes.dialog}
+        >
+          <DialogContentText id="alert-dialog-description"
+          className={classes.dialog}
+          >
             <div className={classes.container}>
               {children}
             </div>

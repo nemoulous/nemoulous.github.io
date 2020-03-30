@@ -9,11 +9,14 @@ import SwipeableViews from 'react-swipeable-views';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import { autoPlay } from 'react-swipeable-views-utils';
 import BaseDialog from './BaseDialog';
-import { products } from '../strategies/All';
+import { products } from '../products/All';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const styles = (theme) => ({
+  dialog: {
+    backgroundColor: theme.palette.secondary.dark,
+  },
   container: {
     maxWidth: 600,
     flexGrow: 1,
@@ -84,7 +87,7 @@ class SwipeDialog extends Component {
               steps={maxSteps}
               position="static"
               activeStep={activeStep}
-              className={classes.mobileStepper}
+              className={classes.dialog}
               nextButton={(
                 <Button size="small" onClick={this.handleNext} disabled={activeStep === maxSteps - 1}>
                   Next
@@ -98,7 +101,7 @@ class SwipeDialog extends Component {
             />
           </div>
           <div className={classes.stepsContainer}>
-            <Typography style={{ textTransform: 'uppercase' }} color="secondary" gutterBottom>
+            <Typography style={{ textTransform: 'uppercase' }} color="primary" gutterBottom>
               {products[activeStep].label}
             </Typography>
             <Typography variant="body2" gutterBottom>

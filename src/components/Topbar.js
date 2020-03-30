@@ -149,7 +149,7 @@ class Topbar extends Component {
                 <>
                   <div className={classes.productLogo}>
                       <Typography>
-                        Capital
+                      Technologies
                       </Typography>
                     </div>
                   <div className={classes.iconContainer}>

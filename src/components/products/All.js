@@ -2,7 +2,7 @@
 export
 const products = [
   {
-    label: 'Strategy1',
+    label: 'Product',
     description: '',
     link: '',
     longDescription: '',

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@material-ui/styles/withStyles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import Strategy1 from './strategies/Strategy1';
+import Product1 from './products/Product1';
 import Topbar from './Topbar';
 import Footer from './Footer';
 import SectionHeader from './SectionHeader';
@@ -38,7 +38,7 @@ const Products = (props) => {
           <Grid spacing={10} alignItems="center" justify="center" container className={classes.grid}>
             <Grid item xs={12}>
               <SectionHeader title="Strategies" subtitle="A brief overview of our systematic strageies." />
-              <Strategy1 />
+              <Product1 />
             </Grid>
           </Grid>
         </Grid>
