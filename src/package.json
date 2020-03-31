@@ -25,7 +25,7 @@
   },
   "scripts": {
     "build": "react-scripts build",
-    "deploy": "gh-pages -d build -b master -e dist",
+    "deploy": "gh-pages -d build -b master -e ../",
     "eject": "react-scripts eject",
     "fix": "eslint src/**/*.js src/**/**/*.js --fix",
     "lint": "eslint src/**/*.js src/**/**/*.js",
