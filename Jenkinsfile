@@ -1,3 +1,0 @@
-pipeline {
-    load "src/Jenkinsfile"
-}
