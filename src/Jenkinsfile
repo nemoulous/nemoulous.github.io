@@ -1,0 +1,40 @@
+pipeline {
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+    }
+    agent any
+        stages {
+            stage('PreBuild') {
+                parallel {
+                    stage('Dependencies') {
+                        steps {
+                            sh 'yarn'
+                        }
+                    }
+                }
+            }
+            stage('Build') {
+                steps {
+                    sh 'yarn build'
+                }
+                post {
+                    success {
+                        echo 'Build succeeded.'
+                    }
+                    failure {
+                        echo 'Build failed.'
+                    }
+                }
+            }
+            stage('Lint') {
+                steps {
+                    sh 'yarn lint'
+                }
+            }
+            stage('Test') {
+                steps {
+                    sh 'yarn test'
+                }
+            }
+        }
+    }
