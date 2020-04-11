@@ -8,14 +8,14 @@ pipeline {
                 parallel {
                     stage('Dependencies') {
                         steps {
-                            sh 'yarn'
+                            sh 'cd src && yarn'
                         }
                     }
                 }
             }
             stage('Build') {
                 steps {
-                    sh 'yarn build'
+                    sh 'cd src && yarn build'
                 }
                 post {
                     success {
@@ -28,12 +28,12 @@ pipeline {
             }
             stage('Lint') {
                 steps {
-                    sh 'yarn lint'
+                    sh 'cd src && yarn lint'
                 }
             }
             stage('Test') {
                 steps {
-                    sh 'yarn test'
+                    sh 'cd src && yarn test'
                 }
             }
         }
