@@ -12,7 +12,7 @@ const styles = (theme) => ({
     bottom: 0,
     width: '100%',
     boxShadow: 'none',
-    backgroundColor: theme.palette.secondary.dark,
+    backgroundColor: theme.palette.secondary.main,
     color: theme.palette.primary.light,
   },
   flex: {
@@ -49,7 +49,7 @@ const Footer = (props) => {
         <Typography variant="body1" color="inherit" noWrap>
           <Link to="/" className={classes.link}>
             <span>
-            Nemoulous Capital
+            Nemoulous
             </span>
           </Link>
         </Typography>
@@ -57,7 +57,7 @@ const Footer = (props) => {
           <span>© 2020</span>
         </Typography>
         <Typography variant="body1" color="inherit" noWrap>
-          <span>NemoulousCapital.com</span>
+          <a href="https://nemoulous.com"><span>nemoulous.com</span></a>
         </Typography>
       </Grid>
     </div>

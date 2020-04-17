@@ -83,7 +83,7 @@ const CardItem = (props) => {
                     <div className={classes.baseline}>
                         <div className={classes.inline}>
                             <Typography style={{ textTransform: 'uppercase' }} color="primary" gutterBottom>
-                                Strategy1
+                                Product1
                             </Typography>
                             <Typography variant="body1" color="primary" gutterBottom>
                                 {products[0].description}

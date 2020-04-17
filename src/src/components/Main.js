@@ -37,7 +37,7 @@ const styles = (theme) => ({
   },
   background: {
     // background: 'url(bits.png) no-repeat',
-    backgroundColor: "black",
+    backgroundColor: "rgba(39, 40, 39, 1)",
     backgroundSize: 'cover',
     height: "70%",
     overflow: "hidden",
@@ -50,34 +50,25 @@ const styles = (theme) => ({
     color: theme.palette.primary.light,
     display: 'flex',
     background: "transparent",
+    borderBottom: "1px solid rgba(209, 255, 44, 1)"
   },
   paper: {
     minHeight: 20,
     textAlign: 'left',
     color: theme.palette.primary.dark,
-    backgroundColor: theme.palette.secondary.dark,
+    backgroundColor: theme.palette.secondary.main,
     padding: 10,
+    borderBottom: "1px solid rgba(2, 204, 204, 1)"
   },
   paperDark: {
     minHeight: 20,
     textAlign: 'left',
     color: theme.palette.primary.dark,
     padding: 10,
-    backgroundColor: theme.palette.secondary.dark,
-  },
-  mainTitle: {
-    color: theme.palette.primary.light,
-  },
-  mainSubtitle: {
-    color: theme.palette.primary.light,
+    backgroundColor: theme.palette.secondary.main,
+    borderBottom: "1px solid rgba(255, 82, 82, 1)"
   },
   title: {
-    color: theme.palette.primary.light,
-  },
-  titleDark: {
-    color: theme.palette.primary.dark,
-  },
-  titleLight: {
     color: theme.palette.primary.light,
   },
   rangeLabel: {
@@ -109,6 +100,12 @@ const styles = (theme) => ({
   },
   box: {
     marginBottom: 40,
+    margin: 'auto',
+    maxWidth: 1000,
+  },
+  boxFlex: {
+    display: "flex",
+    flexDirection: "row",
     margin: 'auto',
     maxWidth: 1000,
   },
@@ -145,7 +142,7 @@ class Main extends Component {
     super(props);
     this.state = {
       aboutUsDialog: false,
-      strategiesDialog: false,
+      productsDialog: false,
       contactDialog: false,
     };
   }
@@ -155,8 +152,14 @@ class Main extends Component {
       // === THREE.JS CODE START ===
       var renderer = new THREE.WebGLRenderer({antialias: true});
       renderer.setSize( window.innerWidth, window.innerHeight );
+      renderer.setClearColor(0x272827);
       this.mount.appendChild( renderer.domElement );
       
+      const resizeCanvas = () => {
+        renderer.setSize( window.innerWidth, window.innerHeight );
+      };
+      window.addEventListener('resize', resizeCanvas);
+
       // randomly generate walks
       var points1 = [];
       var points2 = [];
@@ -194,7 +197,6 @@ class Main extends Component {
       // camera
       var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, .1, 2000);
       camera.position.set( 0, 100, 800);
-      // camera.position.set( 0, 200, 200);
       camera.lookAt( 0, 0, 0);
       // end camera
       
@@ -213,7 +215,7 @@ class Main extends Component {
       grid.position.z = -500;
       scene.add( grid );
       // fog to fade grid into "infinity"
-      scene.fog = new THREE.Fog( 0x000000, 1, 2000 );
+      scene.fog = new THREE.Fog( 0x272827, 1, 2000 );
       // end grid
 
       const vertexShader = `
@@ -316,19 +318,10 @@ class Main extends Component {
       // construct segments
       var line1 = new THREE.LineSegments(geometry1, material);
       var line2 = new THREE.LineSegments(geometry2, material);
-      // var line2 = new THREE.LineSegments(geometry2, material.clone());
       var line3 = new THREE.LineSegments(geometry3, material);
       var line4 = new THREE.LineSegments(geometry4, material);
       var line5 = new THREE.LineSegments(geometry5, material);
       var line6 = new THREE.LineSegments(geometry6, material);
-
-      // color
-      // line1.material.uniforms.color.value = [0, 255, 255, 255];
-      // line2.material.uniforms.color.value = [176, 172, 176, 255]; // b0acb0
-      // line3.material.uniforms.color.value = [226, 221, 223, 255]; // e2dddf
-      // line4.material.uniforms.color.value = [133, 235, 217, 255]; // 85ebd9
-      // line5.material.uniforms.color.value = [61, 137, 141, 255]; // 3d898d
-      // line1.material.uniforms.color.value = [47, 64, 77, 255]; // 2f404d
 
       // add to scene
       scene.add( line1 );
@@ -346,11 +339,6 @@ class Main extends Component {
           return;
         }
         line1.material.uniforms.index.value = index;
-        // line2.material.uniforms.index.value = index;
-        // line3.material.uniforms.index.value = index;
-        // line4.material.uniforms.index.value = index;
-        // line5.material.uniforms.index.value = index;
-        // line6.material.uniforms.index.value = index;
         index+=4;
         renderer.render( scene, camera );
       };
@@ -363,8 +351,8 @@ class Main extends Component {
     this.setState({ aboutUsDialog: true });
   }
 
-  openStrategiesDialog = () => {
-    this.setState({ strategiesDialog: true });
+  openProductsDialog = () => {
+    this.setState({ productsDialog: true });
   }
 
   openContactDialog = () => {
@@ -374,14 +362,14 @@ class Main extends Component {
   dialogClose = () => {
     this.setState({
       aboutUsDialog: false,
-      strategiesDialog: false,
+      productsDialog: false,
       contactDialog: false,
     });
   }
 
   render() {
     const { classes } = this.props;
-    const { strategiesDialog, contactDialog } = this.state;
+    const { productsDialog, contactDialog } = this.state;
     return (
       <>
         <CssBaseline />
@@ -392,11 +380,11 @@ class Main extends Component {
             <Grid item xs={12} className={classes.gridItem}>
               <Paper className={classes.paperMain}>
                 <div className={classes.boxMain}>
-                  <Typography style={{ fontWeight: 'bold' }} variant="h1" className={classes.mainTitle} gutterBottom>
+                  <Typography style={{ fontWeight: 'bold' }} variant="h1" gutterBottom>
                     Nemoulous
                   </Typography>
-                  <Typography className={classes.mainSubtitle} variant="h3" gutterBottom>
-                    Financial Technologies
+                  <Typography className={classes.mainSubtitle} variant="h6" gutterBottom>
+                    a paradigm shift in investment management
                   </Typography>
                 </div>
               </Paper>
@@ -404,34 +392,37 @@ class Main extends Component {
             <Grid item xs={12} className={classes.gridItem}>
               <Paper className={classes.paperDark}>
                 <div className={classes.box}>
-                  <Typography variant="h3" className={classes.title} gutterBottom>
-                  Technology and Software
-                  </Typography>
                   <Typography variant="h6" gutterBottom color="primary">
                     Nemoulous Capital is a NYC based financial technology firm.
                   </Typography>
+                  <Typography variant="subtitle1" gutterBottom>
+                    We are building a platform to automate and enhance the translation of information into investment strategies.
+                  </Typography>
                 </div>
                 <div className={classes.buttonBar}>
-                  <Button onClick={this.openStrategiesDialog} color="primary" variant="contained" className={classes.actionButtom}>
+                <Button onClick={this.openProductsDialog} color="primary" variant="contained" className={classes.actionButtom}>
                     Products
+                  </Button>
+                  <Button color="primary" variant="outlined" className={classes.actionButtom} component={Link} to="about">
+                    About Us
                   </Button>
                 </div>
               </Paper>
             </Grid>
             <Grid item xs={12} className={classes.gridItem}>
               <Paper className={classes.paper}>
-                <div className={classes.box}>
-                  <Typography variant="h3" className={classes.titleLight} gutterBottom>
-                  Subtitle2
-                  </Typography>
-                  <Typography variant="h6" gutterBottom color="primary">
-                  Some other info
-                  </Typography>
+                <div className={classes.boxFlex}>
+                  <img style={{flex: 1}} src="img/industry.png" alt="hedge fund industry" width="300px" />
+                  <div style={{flex: 1, paddingLeft: 50, display: "flex", flexDirection: "column", justifyContent: "center"}}>
+                    <Typography style={{marginLeft: "auto"}} variant="h6" gutterBottom>
+                    The hedge fund industry is broken.
+                    </Typography>
+                    <Typography style={{marginLeft: "auto"}}  variant="subtitle1" gutterBottom color="primary">
+                    We're building the fix.
+                    </Typography>
+                  </div>
                 </div>
                 <div className={classes.buttonBar}>
-                  <Button color="primary" variant="outlined" className={classes.actionButtom} component={Link} to="about">
-                    About Us
-                  </Button>
                   <Button onClick={this.openContactDialog} color="primary" variant="contained" className={classes.actionButtom}>
                     Contact
                   </Button>
@@ -440,7 +431,7 @@ class Main extends Component {
             </Grid>
           </Grid>
           <SwipeDialog
-            open={strategiesDialog}
+            open={productsDialog}
             onClose={this.dialogClose}
           />
           <InstructionDialog

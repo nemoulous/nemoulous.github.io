@@ -23,8 +23,9 @@ const styles = (theme) => ({
   appBar: {
     position: 'relative',
     boxShadow: 'none',
-    backgroundColor: theme.palette.secondary.dark ,
+    backgroundColor: theme.palette.secondary.main,
     color: theme.palette.primary.light,
+    borderBottom: "1px solid rgba(200, 200, 200, 1)"
   },
   inline: {
     display: 'inline'
@@ -84,6 +85,9 @@ const styles = (theme) => ({
     minWidth: 'auto',
     color: theme.palette.primary.dark,
   },
+  indicator: {
+    backgroundColor: "rgba(2, 204, 204, 1)"
+  }
 });
 
 class Topbar extends Component {
@@ -119,7 +123,7 @@ class Topbar extends Component {
     if (currentPath === '/about') {
       return 1;
     }
-    if (currentPath === '/strategies') {
+    if (currentPath === '/products') {
       return 2;
     }
     if (currentPath === '/signup') {
@@ -140,8 +144,8 @@ class Topbar extends Component {
               <div className={classes.inline}>
                 <Typography variant="h6" color="inherit" noWrap>
                   <Link to="/" className={classes.link}>
-                    <img width={30} height={30} src="zodiac.png" alt="" />
-                    <span className={classes.tagline}>Nemoulous</span>
+                    <img width={30} height={30} src="img/logo.png" alt="" />
+                    {/* <span className={classes.tagline}>Nemoulous</span> */}
                   </Link>
                 </Typography>
               </div>
@@ -149,7 +153,7 @@ class Topbar extends Component {
                 <>
                   <div className={classes.productLogo}>
                       <Typography>
-                      Technologies
+                      Nemoulous
                       </Typography>
                     </div>
                   <div className={classes.iconContainer}>
@@ -172,7 +176,9 @@ class Topbar extends Component {
                     </SwipeableDrawer>
                     <Tabs
                       value={this.current() || value}
-                      indicatorColor="primary"
+                      classes={{
+                        indicator: classes.indicator
+                      }}
                       textColor="primary"
                       onChange={this.handleChange}
                     >

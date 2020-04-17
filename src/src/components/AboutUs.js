@@ -44,6 +44,7 @@ const styles = (theme) => ({
     display: "flex",
     flexDirection: "column",
     margin: "auto",
+    minHeight: 480,
     paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(3),
     alignItems: "center",
@@ -68,8 +69,8 @@ const styles = (theme) => ({
   },
   avatar: {
     backgroundColor: theme.palette.secondary.light,
-    width: 200,
-    height: 200,
+    width: 150,
+    height: 150,
   }
 });
 
@@ -77,18 +78,32 @@ const styles = (theme) => ({
 const Team = [
   {
     name: "Jed Hsu",
-    title: "Title",
-    image: "test.png",
+    title: "CEO",
+    image: "img/jed.png",
+    text: `<div><strong>Portfolio Manager</strong><br>
+    Jamison Capital Partners<br><br>
+    <strong>Quantitative Research Analyst</strong><br>
+    Jamison Capital Partners<br><br>
+    B.S. in Economics<br>
+    Wharton - University of Pennsylvania, 2015
+    </div>
+    `
   },
   {
     name: "Jeffrey Luk",
-    title: "Title",
-    image: "test.png",
-  },
-  {
-    name: "Tim Paine",
-    title: "Title",
-    image: "test.png",
+    title: "COO",
+    image: "img/jeff.png",
+    text: `<div><strong>Co-Founder / VP of Product</strong><br>
+    Ledger Run<br><br>
+    <strong>Product & Strategy</strong><br>
+    Walters Kluwer<br><br>
+    <strong>Investment Banking</strong><br>
+    J.P. Morgan<br><br>
+
+    B.A. in Economics and Philosophy<br>
+    Columbia University, 2016
+    </div>
+    `
   },
 ]
 
@@ -121,12 +136,14 @@ class AboutUs extends Component {
               {Team.map(value => (
               <Grid item xs={12} sm={6} md={4} key={value.name} >
                 <Paper className={classes.paper} >
-                  <Avatar alt={value.name} src={value.image} className={classes.avatar} />
+                  <Avatar variant="rounded" alt={value.name} src={value.image} className={classes.avatar} />
                   <Typography variant="h6" color="primary">
                     {value.name}
                   </Typography>
                   <Typography variant="subtitle1" color="primary">
                     {value.title}
+                  </Typography>
+                  <Typography variant="body2" color="primary" dangerouslySetInnerHTML={{__html: value.text}}>
                   </Typography>
                 </Paper>
               </Grid>
@@ -138,7 +155,7 @@ class AboutUs extends Component {
                   <Typography variant="body1" gutterBottom>
                   Feel free to reach out to us with any questions.
                   </Typography>
-                    <Button variant="outlined" className={classes.outlinedButtom}>
+                    <Button variant="outlined" color="primary" className={classes.outlinedButtom}>
                         Email us
                       </Button>
                 </Grid>

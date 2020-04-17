@@ -17,7 +17,6 @@ const styles = (theme) => ({
     overflow: 'hidden',
     backgroundSize: 'cover',
     backgroundPosition: '0 400px',
-    marginTop: 20,
     padding: 20,
     paddingBottom: 20,
   },
@@ -37,7 +36,7 @@ const Products = (props) => {
         <Grid container justify="center">
           <Grid spacing={10} alignItems="center" justify="center" container className={classes.grid}>
             <Grid item xs={12}>
-              <SectionHeader title="Strategies" subtitle="A brief overview of our systematic strageies." />
+              <SectionHeader title="Products" subtitle="" />
               <Product1 />
             </Grid>
           </Grid>
