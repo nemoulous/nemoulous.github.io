@@ -1053,6 +1053,9 @@ table {
   }
   
   /* --------------------------------------    Image Styles : 1200px - 1440px */
+  .logo {
+    max-width: 215px;
+  }
   
   .left-wave-top, .right-wave-top {
     width: 434px;
