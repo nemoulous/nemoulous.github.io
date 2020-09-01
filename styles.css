@@ -104,30 +104,35 @@ body::-webkit-scrollbar-thumb {
   color: #1F44F5;
 }
 
-.menu-item::after
-{
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 100%;
-  height: 2px;
-  color: #1F44F5;
-  background: #1F44F5;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 150ms ease-in;
-}
-
-.menu-item:hover::after
-{
-  transform: scaleX(1);
-}
-
 .logo:hover
 {
   transform: scaleX(1.02) scaleY(1.02)
 }
+
+.founder-link:hover
+{
+  color: #e6e6e6;
+}
+
+.linkedin
+{
+  justify-self: center;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.linkedin-img
+{
+  width: 28px;
+  display: block;
+}
+
+.linkedin-img:hover
+{
+  background-color: #e6e6e6;
+  border-radius: 4px;
+}
+
 /*------------------------------------------------------------------------------
 
 -----------------------------------------------    SITE STYLES : 1px - 374px       
@@ -136,71 +141,6 @@ body::-webkit-scrollbar-thumb {
 
 @media screen and (min-width: 1px)
 {
-  #examples
-  {
-    display: flex;
-    flex-flow: column;
-    max-width: 100%;
-    width: 960px;
-    background-color: white;
-    opacity: 0.95;
-    padding: 15px 30px;
-    margin: 0 auto 30px;
-  }
-  
-  #examples h1
-  {
-    font-size: 48px;
-    text-align: center;
-    margin: 30px 15px 60px;
-  }
-  
-  #examples .example
-  {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    margin: 0 0 45px;
-  }
-  
-  #examples .example .hover
-  {
-    font-size: 36px;
-    text-align: center;
-    margin: 0 auto;
-    padding: 0;
-    transition: all 0.2s ease-in-out;
-    position: relative;
-  }
-  
-  #examples .example .hover:before, #examples .example .hover:after
-  {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    width: 0px;
-    height: 5px;
-    margin: 5px 0 0;
-    transition: all 0.2s ease-in-out;
-    transition-duration: 0.75s;
-    opacity: 0;
-    background-color: #e69500;
-  }
-  
-  
-  #examples .example .hover:before, #examples .example .hover:after
-  {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    width: 0px;
-    height: 5px;
-    margin: 5px 0 0;
-    transition: all 0.2s ease-in-out;
-    transition-duration: 0.75s;
-    opacity: 0;
-    background-color: #e69500;
-  }
   
   .menu-item
   {
@@ -808,13 +748,7 @@ body::-webkit-scrollbar-thumb {
     text-align: center;
   }
   
-  .linkedin
-  {
-    max-width: 32px;
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-    justify-self: center;
-  }
+
   
   .left-down-wave
   {
@@ -1497,6 +1431,26 @@ body::-webkit-scrollbar-thumb {
 
 @media screen and (min-width: 501px)
  {
+  
+  .menu-item::after
+  {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    color: #1F44F5;
+    background: #1F44F5;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 150ms ease-in;
+  }
+
+  .menu-item:hover::after
+  {
+    transform: scaleX(1);
+  }
   
   .home-global-site-container
   {
@@ -2339,11 +2293,6 @@ body::-webkit-scrollbar-thumb {
   .pathway-img
   {
     max-width: 292px;
-  }
-  
-  .linkedin
-  {
-    max-width: 32px;
   }
   
   .about-img
