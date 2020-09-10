@@ -76,9 +76,20 @@ a
   box-sizing: inherit;
 }
 
+
 * {
   scrollbar-width: thin;
   scrollbar-color: #000a3a #00051e;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%
 }
 
 body::-webkit-scrollbar {
@@ -1120,6 +1131,7 @@ body::-webkit-scrollbar-thumb {
   .home-site-container
   { 
     grid-template-rows: minmax(40px, 50px) repeat(86, 76px);
+    overflow: hidden;
   }
   
   .menu-item
